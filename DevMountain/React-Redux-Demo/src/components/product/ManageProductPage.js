@@ -12,12 +12,48 @@ class ManageProductPage extends React.Component {
         product: Object.assign({}, this.props.product),
         errors: {}
       };
+
+      this.updateProductState = this.updateProductState.bind(this);
+      this.saveProduct = this.saveProduct.bind(this);
+      this.deleteProduct = this.deleteProduct.bind(this);
     }
+
+  componentWillReceiveProps(nextProps) {
+    if(this.props.product.id != nextProps.product.id) {
+      //Necessary to populate form when existing product is loaded directly
+      this.setState({product: Object.assign({}, nextProps.product)});
+    }
+  }
+
+  updateProductState(event) {
+    const field = event.target.name;
+    let product = this.state.product;
+    product[field] = event.target.value;
+    return this.setState({product: product})
+  }
+
+  saveProduct(event) {
+    event.preventDefault();
+    this.props.actions.saveProduct(this.state.product);
+    this.context.router.push('/products');
+  }
+
+  deleteProduct(event) {
+    event.preventDefault();
+    console.log(this.state.product);
+    this.props.actions.deleteProduct(this.state.product.id);
+    this.context.router.push('/products');
+
+  }
 
     render() {
         return (
             <ProductForm
               allUsers={this.props.users}
+              productCategories={[{category:'Accessories'},{category:'Arts & Collectibles'}]}
+              onChange={this.updateProductState}
+              onSave={this.saveProduct}
+              onDelete={this.deleteProduct}
               product={this.state.product}
               errors={this.state.errors}/>
         );
@@ -26,11 +62,28 @@ class ManageProductPage extends React.Component {
 
 ManageProductPage.propTypes = {
   product: PropTypes.object.isRequired,
-  users: PropTypes.array.isRequired
+  users: PropTypes.array.isRequired,
+  actions: PropTypes.object.isRequired
 };
 
+//this makes react-router available on this component
+ManageProductPage.contextTypes = {
+  router: PropTypes.object
+};
+
+function getProductById(products, id){
+  const product = products.filter(product => product.id == id);
+  if (product) return product[0];
+  return null;
+}
+
 function mapStateToProps(state, ownProps) {
+  const productId = ownProps.params.id; //from the path '/product/:id
   let product = {id: '', title: '', price: '', quantity: ''};
+
+  if (productId && state.products.length > 0) {
+    product = getProductById(state.products, productId)
+  }
 
   const usersFormattedForDropdown = state.users.map(user => {
     return {

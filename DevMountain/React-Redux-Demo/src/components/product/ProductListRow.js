@@ -11,6 +11,9 @@ const ProductListRow = ({product}) => {
       <td><Link to={'/product/' + product.id}>{product.title}</Link></td>
       <td>{product.price}</td>
       <td>{product.quantity}</td>
+      <td><input type="submit"
+                 value="Delete Product"
+                 className="btn btn-primary"/></td>
     </tr>
   );
 };

@@ -1,11 +1,147 @@
+@import url(https://fonts.googleapis.com/css?family=Lato);
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+p, h1, h2, h3, h4, h5, li, div, button, a, Link {
+  font-family: 'Lato', sans-serif;
+}
+
+
 #app {
   font-size: 14px;
 }
 
 a.active {
-  color: orange;
+  color: #F56400;
 }
 
 nav {
-  padding-top: 20px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+
+}
+
+.header-logo {
+  font-size: 30px;
+  font-family: serif;
+}
+
+.header-icon-holder {
+  height: 100%;
+  float: right;
+  display: flex;
+  align-items: center;
+}
+
+.nav-icon {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  float: right;
+  margin-left: 18px;
+}
+
+
+.nav-img {
+  height: 26px;
+  border: solid lightgray .5px;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.glyphicon {
+  font-size: 20px;
+  color: #666666;
+}
+
+.sub-header {
+  border-top: solid black 1px;
+  border-bottom: solid black 1px;
+  padding: 3px;
+
+}
+
+
+
+/*Home Page Styles*/
+.banner-container {
+  height: 152px;
+  width: 100vw;
+  background: url('https://img0.etsystatic.com/042/1/6297544/il_570xN.655718834_dec0.jpg') no-repeat center;
+
+}
+
+.banner-img {
+  height: 100%;
+}
+
+.search-bar-container {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.search-input {
+  height: 40px;
+  width: 280px;
+  border: solid darkgrey 1px;
+  border-radius: 3px 0px 0px 3px;
+  padding-left: 10px;
+}
+
+.search-button {
+  height: 40px;
+  width: 70px;
+  background: #F56400;
+  color: #FFF;
+  border:none;
+  border-radius: 0px 3px 3px 0px;
 }

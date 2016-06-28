@@ -6,10 +6,12 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as productActions from '../../actions/productActions';
 import ProductList from './ProductList';
+import {browserHistory} from 'react-router';
 
 class ProductPage extends React.Component {
   constructor(props, context) {
     super(props, context);
+    this.redirectToAddProductPage = this.redirectToAddProductPage.bind(this);
     this.state = {
       product: {title:""}
     };
@@ -32,6 +34,10 @@ class ProductPage extends React.Component {
     return <div key={index}>{product.title}</div>;
   }
 
+  redirectToAddProductPage() {
+    browserHistory.push('/product');
+  }
+
   render() {
     //this is called destructuring
     const {products} = this.props;
@@ -39,6 +45,10 @@ class ProductPage extends React.Component {
     return (
       <div>
         <h1>Products</h1>
+        <input type="submit"
+          value="Add Product"
+          className="btn btn-primary"
+          onClick={this.redirectToAddProductPage} />
         <ProductList products={products} />
 
       </div>
