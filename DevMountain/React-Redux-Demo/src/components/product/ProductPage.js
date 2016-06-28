@@ -13,11 +13,12 @@ class ProductPage extends React.Component {
     super(props, context);
     this.redirectToAddProductPage = this.redirectToAddProductPage.bind(this);
     this.state = {
-      product: {title:""}
+      product: {title: "", id:6}
     };
 
     this.onTitleChange = this.onTitleChange.bind(this);
     this.onClickSave = this.onClickSave.bind(this);
+    this.deleteProduct = this.deleteProduct.bind(this);
   }
 
   onTitleChange(event) {
@@ -28,6 +29,16 @@ class ProductPage extends React.Component {
 
   onClickSave() {
     this.props.actions.createProduct(this.state.product);
+  }
+
+  deleteProduct(productId) {
+    //event.preventDefault();
+    console.log(productId);
+    console.log(this.props);
+    console.log(this.state);
+    //this.props.actions.deleteProduct(productId);
+    //this.context.router.push('/products');
+
   }
 
   productRow(product, index) {
@@ -43,13 +54,17 @@ class ProductPage extends React.Component {
     const {products} = this.props;
 
     return (
-      <div>
-        <h1>Products</h1>
+      <div className="manage-product-user-screen">
+        <h3>Stock your shop</h3>
+        <p>Add as many listings as you can. Ten or more would be a great start.
+         More listings means more changes to be discovered!</p>
         <input type="submit"
           value="Add Product"
           className="btn btn-primary"
-          onClick={this.redirectToAddProductPage} />
-        <ProductList products={products} />
+          onClick={this.redirectToAddProductPage}/>
+        <ProductList products={products}
+                      onCreate={this.redirectToAddProductPage}
+                      onDelete={this.deleteProduct}/>
 
       </div>
     );

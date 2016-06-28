@@ -5,6 +5,7 @@ import React from 'react';
 import {Link} from 'react-router';
 import Banner from './Banner';
 import SearchBar from '../common/SearchBar';
+import CategorySelector from '../common/CategorySelector';
 
 class HomePage extends React.Component {
   render() {
@@ -12,6 +13,7 @@ class HomePage extends React.Component {
       <div>
         <Banner />
         <SearchBar />
+        <CategorySelector />
       </div>
     );
   }

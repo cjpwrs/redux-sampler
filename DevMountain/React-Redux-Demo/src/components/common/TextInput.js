@@ -2,7 +2,7 @@
  * Created by cjpowers on 6/26/16.
  */
 import React, {PropTypes} from 'react';
-const TextInput = ({type, name, label, onChange, placeholder, value, error}) => {
+const TextInput = ({type, name, label, onChange, className, placeholder, value, error}) => {
   let wrapperClass = 'form-group';
   if (error && error.length > 0) {
     wrapperClass += " " + 'has-error';
@@ -10,12 +10,11 @@ const TextInput = ({type, name, label, onChange, placeholder, value, error}) => 
 
   return (
     <div className={wrapperClass}>
-      <label htmlFor={name}>{label}</label>
-      <div className="field">
+      <div>
         <input
           type={type}
           name={name}
-          className="form-control"
+          className={className}
           placeholder={placeholder}
           value={value}
           onChange={onChange} />
@@ -30,6 +29,7 @@ TextInput.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  className: PropTypes.string,
   placeholder: PropTypes.string,
   value: PropTypes.string,
   error: PropTypes.string

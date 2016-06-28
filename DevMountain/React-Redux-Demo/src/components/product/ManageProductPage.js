@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as productActions from '../../actions/productActions';
 import ProductForm from './ProductForm';
+import { categories } from '../../constants/constantSelectValues';
 
 class ManageProductPage extends React.Component {
     constructor(props, context) {
@@ -50,7 +51,7 @@ class ManageProductPage extends React.Component {
         return (
             <ProductForm
               allUsers={this.props.users}
-              productCategories={[{category:'Accessories'},{category:'Arts & Collectibles'}]}
+              productCategories={categories}
               onChange={this.updateProductState}
               onSave={this.saveProduct}
               onDelete={this.deleteProduct}

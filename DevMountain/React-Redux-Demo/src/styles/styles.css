@@ -67,6 +67,18 @@ nav {
 
 }
 
+nav a:hover {
+  text-decoration: none;
+}
+
+nav a:visited {
+  text-decoration: none;
+}
+
+nav Link:hover {
+  text-decoration: none;
+}
+
 .header-logo {
   font-size: 30px;
   font-family: serif;
@@ -130,18 +142,131 @@ nav {
 }
 
 .search-input {
-  height: 40px;
+  height: 37px;
   width: 280px;
-  border: solid darkgrey 1px;
+  border: solid lightgrey 1px;
   border-radius: 3px 0px 0px 3px;
   padding-left: 10px;
+  font-size: 16px;
 }
 
 .search-button {
-  height: 40px;
-  width: 70px;
+  height: 37px;
+  width: 75px;
   background: #F56400;
   color: #FFF;
   border:none;
   border-radius: 0px 3px 3px 0px;
+  font-size: 15px;
+}
+
+.category-holder {
+  margin: auto;
+  width: 95%;
+  border-radius: 4px;
+}
+
+.category-box{
+  height: 46px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: solid lightgrey .5px;
+  position: relative;
+}
+
+.category-box:hover {
+  background: lightgrey;
+}
+
+.category-icon {
+  margin-right: 10px;
+}
+
+.category-text {
+  margin-top: auto;
+  margin-bottom: auto;
+  color: #524452;
+}
+
+.category-arrow {
+  position: absolute;
+  right: 5px;
+  top: 12px;
+}
+
+.glyphicon-chevron-right {
+  font-size: 14px;
+}
+
+
+/* Shop owner admin functions */
+.manage-product-user-screen {
+  background: #F5F5F1;
+}
+
+.product-holder-admin {
+  margin: auto;
+  width: 95%;
+  background: #FFF;
+  padding: 10px;
+  border: solid lightgrey .2px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.product-box-admin {
+  height: 250px;
+  width: 170px;
+  border: solid lightgrey .2px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.product-img-holder-admin {
+  height: 55%;
+  width: 98%;
+  margin: auto;
+}
+
+.product-img-holder-admin img {
+  height: 100%;
+}
+
+.product-info-holder-admin {
+  height: 45%;
+}
+
+.product-admin-options {
+  height: 45px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-top: solid lightgrey .2px;
+}
+
+.product-admin-option-single {
+  width: 50%;
+  height: 100%;
+}
+
+.blue {
+  background: #F0FBFD;
+  color: #83CBDC;
+}
+
+.create-product {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.pointer:hover{
+  cursor: pointer;
 }

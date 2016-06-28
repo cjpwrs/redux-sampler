@@ -4,22 +4,29 @@
 import React, {PropTypes} from 'react';
 import {Link} from 'react-router';
 
-const ProductListRow = ({product}) => {
+const ProductListRow = ({product, onDelete}) => {
   return(
-    <tr>
-      <td></td>
-      <td><Link to={'/product/' + product.id}>{product.title}</Link></td>
-      <td>{product.price}</td>
-      <td>{product.quantity}</td>
-      <td><input type="submit"
-                 value="Delete Product"
-                 className="btn btn-primary"/></td>
-    </tr>
+    <div className="product-box-admin">
+      <div className="product-img-holder-admin">
+        <Link to={'/product/' + product.id}>
+          <img src="https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwiQ7rGnncvNAhUF_IMKHUJcDsQQjRwIBw&url=http%3A%2F%2Fwww.clipartpanda.com%2Fcategories%2Fcookie-with-glasses&psig=AFQjCNHSOTBmTfTfEqUWCvDyv-xxSWK84g&ust=1467220713766072" alt=""/>
+        </Link>
+      </div>
+      <div>
+        <h4>{product.title}</h4>
+        <h5>Powershop | {product.price}</h5>
+      </div>
+      <div className="product-admin-options">
+        <Link to={'/product/' + product.id}><div className="product-admin-option-single"><span className="glyphicon glyphicon-edit"></span></div></Link>
+        <div onClick={onDelete} ><span className="glyphicon glyphicon-trash"></span></div>
+      </div>
+    </div>
   );
 };
 
 ProductListRow.propTypes = {
-  product: PropTypes.object.isRequired
+  product: PropTypes.object.isRequired,
+  onDelete: PropTypes.func
 };
 
 export default ProductListRow;

@@ -4,28 +4,29 @@
 import React, {PropTypes} from 'react';
 import ProductListRow from './ProductListRow';
 
-const ProductList = ({products}) => {
+const ProductList = ({products, onCreate, onDelete}) => {
   return (
-    <table className="table">
-      <thead>
-      <tr>
-        <th>&nbsp;</th>
-        <th>Title</th>
-        <th>Price</th>
-        <th>Quantity</th>
-      </tr>
-      </thead>
-      <tbody>
+    <div className="product-holder-admin">
+      <div onClick={onCreate} className="product-box-admin pointer">
+        <div className="product-img-holder-admin blue create-product">
+          <span onClick={onCreate} className="glyphicon glyphicon-plus blue"></span>
+          <h5>Add a Listing</h5>
+        </div>
+        <div className="product-info-holder-admin">
+
+        </div>
+      </div>
       {products.map(product =>
-        <ProductListRow key={product.id} product={product} />
+        <ProductListRow key={product.id} product={product} onDelete={onDelete} />
       )}
-      </tbody>
-    </table>
+    </div>
+
   );
 };
 
 ProductList.propTypes = {
-  products: PropTypes.array.isRequired
+  products: PropTypes.array.isRequired,
+  onDelete: PropTypes.func
 };
 
 export default ProductList;
