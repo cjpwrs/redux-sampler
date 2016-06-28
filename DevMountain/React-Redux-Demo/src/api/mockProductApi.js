@@ -60,7 +60,7 @@ export default class ProductApi {
 
         if (product.id) {
           const existingProductIndex = products.findIndex(a => a.id == product.id);
-          product.splice(existingProductIndex, 1, product);
+          products.splice(existingProductIndex, 1, product);
         } else {
           //Just simulating creation here.
           //The server would generate ids and watchHref's for new products in a real app.
@@ -77,11 +77,11 @@ export default class ProductApi {
   static deleteProduct(productId) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        const indexOfProductToDelete = products.findIndex(product => {
-          product.productId == productId;
-        });
+        console.log('product id is: ', productId);
+        const indexOfProductToDelete = products.findIndex(product => product.id == productId);
+        console.log('index of product to delete: ',indexOfProductToDelete);
         products.splice(indexOfProductToDelete, 1);
-        resolve();
+        resolve(productId);
       }, delay);
     });
   }
